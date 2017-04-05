@@ -1,0 +1,826 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Ubuntu,Terminal," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="安装oh-my-zsh1234567sudo apt-get install zsh gitsudo shutdown -r nowzsh --versiongit clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshcp ~/.zshrc ~/.zshrc.origcp ~/.oh-my-zsh/templates/zshr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu高效开发终端打造">
+<meta property="og:url" content="http://yoursite.com/2015/09/23/2015-09-23-ubuntu-terminal-dev/index.html">
+<meta property="og:site_name" content="TuStar' Blog">
+<meta property="og:description" content="安装oh-my-zsh1234567sudo apt-get install zsh gitsudo shutdown -r nowzsh --versiongit clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshcp ~/.zshrc ~/.zshrc.origcp ~/.oh-my-zsh/templates/zshr">
+<meta property="og:updated_time" content="2017-04-01T09:37:19.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu高效开发终端打造">
+<meta name="twitter:description" content="安装oh-my-zsh1234567sudo apt-get install zsh gitsudo shutdown -r nowzsh --versiongit clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zshcp ~/.zshrc ~/.zshrc.origcp ~/.oh-my-zsh/templates/zshr">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/09/23/2015-09-23-ubuntu-terminal-dev/"/>
+
+
+
+
+
+  <title> Ubuntu高效开发终端打造 | TuStar' Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TuStar' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/09/23/2015-09-23-ubuntu-terminal-dev/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tustar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TuStar' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Ubuntu高效开发终端打造
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-09-23T15:34:01+08:00">
+                2015-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2015/09/23/2015-09-23-ubuntu-terminal-dev/" class="leancloud_visitors" data-flag-title="Ubuntu高效开发终端打造">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="安装oh-my-zsh"><a href="#安装oh-my-zsh" class="headerlink" title="安装oh-my-zsh"></a>安装<a href="https://github.com/robbyrussell/oh-my-zsh" target="_blank" rel="external">oh-my-zsh</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install zsh git</div><div class="line">sudo shutdown -r now</div><div class="line">zsh --version</div><div class="line">git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh</div><div class="line">cp ~/.zshrc ~/.zshrc.orig</div><div class="line">cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc</div><div class="line">chsh -s /bin/zsh</div></pre></td></tr></table></figure>
+<h3 id="安装autojump"><a href="#安装autojump" class="headerlink" title="安装autojump"></a>安装<a href="https://github.com/wting/autojump" target="_blank" rel="external">autojump</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git clone git://github.com/joelthelion/autojump.git ~/.autojump </div><div class="line">cd .autojump</div><div class="line">python install.py</div><div class="line">在~/.zshrc或者～/.bash_profile中配置</div><div class="line">[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] &amp;&amp; source $HOME/.autojump/etc/profile.d/autojump.sh</div><div class="line">autoload -U compinit &amp;&amp; compinit -u</div></pre></td></tr></table></figure>
+<h3 id="安装rvm"><a href="#安装rvm" class="headerlink" title="安装rvm"></a>安装<a href="https://github.com/rvm/rvm" target="_blank" rel="external">rvm</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">curl -L https://get.rvm.io | bash -s stable</div><div class="line">出错了则执行</div><div class="line">gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3</div><div class="line">接着继续</div><div class="line">curl -L https://get.rvm.io | bash -s stable</div><div class="line">最后运行下面命令，让配置生效</div><div class="line">source /home/tustar/.rvm/scripts/rvm</div><div class="line">在~/.zshrc或者～/.bash_profile中配置</div><div class="line">export PATH=&quot;$PATH:$HOME/.rvm/bin&quot;</div></pre></td></tr></table></figure>
+<h3 id="安装ruby"><a href="#安装ruby" class="headerlink" title="安装ruby"></a>安装<a href="https://www.ruby-lang.org/en/" target="_blank" rel="external">ruby</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rvm install ruby</div></pre></td></tr></table></figure>
+<h3 id="安装rubygems"><a href="#安装rubygems" class="headerlink" title="安装rubygems"></a>安装<a href="https://rubygems.org/" target="_blank" rel="external">rubygems</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">sudo-get install gem</div><div class="line">查看当前使用的源地址</div><div class="line">gem sources</div><div class="line">删除默认的源地址</div><div class="line">gem sources -r url地址</div><div class="line">添加淘宝的源地址</div><div class="line">gem sources -a http://ruby.taobao.org/</div><div class="line">更新源的缓存</div><div class="line">gem sources -u</div></pre></td></tr></table></figure>
+<h3 id="安装repo"><a href="#安装repo" class="headerlink" title="安装repo"></a>安装<a href="https://dl-ssl.google.com/dl/googlesource/git-repo/repo" target="_blank" rel="external">repo</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mkdir ~/.repo</div><div class="line">curl &quot;http://php.webtutor.pl/en/wp-content/uploads/2011/09/repo&quot; &gt; ～/.repo/repo</div><div class="line">在~/.zshrc或者～/.bash_profile中配置</div><div class="line">#Repo</div><div class="line">export PATH=&quot;$PATH:$HOME/.repo/repo&quot;</div></pre></td></tr></table></figure>
+<h3 id="安装gradle"><a href="#安装gradle" class="headerlink" title="安装gradle"></a>安装<a href="http://www.gradle.org" target="_blank" rel="external">gradle</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">sudo apt-get remove gradle</div><div class="line">下载地址为 http://www.gradle.org/downloads</div><div class="line">sudo unzip gradle-2.6-all.zip -d ~/.gradle</div><div class="line">在~/.zshrc或者～/.bash_profile中配置</div><div class="line">#Gradle</div><div class="line">export PATH=&quot;$PATH:$HOME/.gradle/gradle-2.7/bin&quot;</div></pre></td></tr></table></figure>
+<h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">从官网下载https://nodejs.org/en/压缩包node-v4.1.1-linux-x64.tar.gz</div><div class="line">tar -xzvf  node-v4.1.1-linux-x64.tar.gz </div><div class="line">mv node-v4.1.1-linux-x64 ~/.node</div><div class="line">在~/.zshrc或者～/.bash_profile中配置</div><div class="line">#NodeJS</div><div class="line">export PATH=&quot;$PATH:$HOME/.node/bin&quot;</div></pre></td></tr></table></figure>
+<h3 id="安装jekyll"><a href="#安装jekyll" class="headerlink" title="安装jekyll"></a>安装<a href="http://jekyllcn.com/" target="_blank" rel="external">jekyll</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">gem install therubyracer</div><div class="line">gem install jekyll-sitemap</div><div class="line">gem install jekyll</div></pre></td></tr></table></figure>
+<h3 id="安装sqlite3"><a href="#安装sqlite3" class="headerlink" title="安装sqlite3"></a>安装<a href="http://www.sqlite.org/" target="_blank" rel="external">sqlite3</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">终端安装命令工具</div><div class="line">sudo apt-get install sqlite3</div><div class="line">图形界面软件</div><div class="line">sudo apt-get install sqlitebrowser</div><div class="line">sudo apt-get install  sqliteman</div></pre></td></tr></table></figure>
+<h3 id="安装其他命令行"><a href="#安装其他命令行" class="headerlink" title="安装其他命令行"></a>安装其他命令行</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ant</div><div class="line">sudo apt-get install python</div><div class="line">sudo apt-get tree</div></pre></td></tr></table></figure>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><ul>
+<li><a href="http://blog.csdn.net/eclipse_c/article/details/38801549" target="_blank" rel="external">ubuntu 14.04下配置on my zsh</a></li>
+<li><a href="http://jingyan.baidu.com/article/4853e1e51c770f1909f726fe.html" target="_blank" rel="external">如何修改Ruby的gem源(gem sources)</a></li>
+<li><a href="http://blog.csdn.net/stwstw0123/article/details/47809189" target="_blank" rel="external">Ubuntu之安装Gradle</a></li>
+<li><a href="http://jingyan.baidu.com/article/f3ad7d0ff8731609c3345b3b.html" target="_blank" rel="external">Ubuntu下Sublime Text 3解决无法输入中文的方法</a></li>
+<li><a href="http://yinger-fei.iteye.com/blog/1300144" target="_blank" rel="external">unbutu下安装repo并下载源码</a></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
+          
+            <a href="/tags/Terminal/" rel="tag"># Terminal</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/09/19/2015-09-19-ubuntu-software/" rel="next" title="Ubuntu常用软件">
+                <i class="fa fa-chevron-left"></i> Ubuntu常用软件
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/10/29/2015-10-29-lunar-calendar/" rel="prev" title="中国农历转公历">
+                中国农历转公历 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="tustar" />
+          <p class="site-author-name" itemprop="name">tustar</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装oh-my-zsh"><span class="nav-number">1.</span> <span class="nav-text">安装oh-my-zsh</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装autojump"><span class="nav-number">2.</span> <span class="nav-text">安装autojump</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装rvm"><span class="nav-number">3.</span> <span class="nav-text">安装rvm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ruby"><span class="nav-number">4.</span> <span class="nav-text">安装ruby</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装rubygems"><span class="nav-number">5.</span> <span class="nav-text">安装rubygems</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装repo"><span class="nav-number">6.</span> <span class="nav-text">安装repo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装gradle"><span class="nav-number">7.</span> <span class="nav-text">安装gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nodejs"><span class="nav-number">8.</span> <span class="nav-text">安装nodejs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装jekyll"><span class="nav-number">9.</span> <span class="nav-text">安装jekyll</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装sqlite3"><span class="nav-number">10.</span> <span class="nav-text">安装sqlite3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装其他命令行"><span class="nav-number">11.</span> <span class="nav-text">安装其他命令行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资料"><span class="nav-number">12.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tustar</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129629"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("xRQp9BLq3q7iYjiMYD1WHVlz-gzGzoHsz", "sQyvsyUDVCFQen7bLmMlJxkU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

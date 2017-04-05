@@ -1,0 +1,965 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,UI,Design," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Google安卓设计指南英文版
+Google安卓设计指南中文版
+
+布局
+margin/padding/border知识
+
+Google推荐布局间隔
+
+Android布局
+
+布局完了之后，可以站在用户的角度看自己的设计
+
+页面元素，先加后减，突出想要突出的内容，弱化不想突出的内容或者砍掉
+
+
+专业术语
+参考资料
+支持不同屏幕英文版
+支持不同屏幕中文版
+Android手机分辨率基础知识
+
+Scree">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发总结与设计师交互">
+<meta property="og:url" content="http://yoursite.com/2014/07/16/2014-07-16-android-designer-ui/index.html">
+<meta property="og:site_name" content="TuStar' Blog">
+<meta property="og:description" content="Google安卓设计指南英文版
+Google安卓设计指南中文版
+
+布局
+margin/padding/border知识
+
+Google推荐布局间隔
+
+Android布局
+
+布局完了之后，可以站在用户的角度看自己的设计
+
+页面元素，先加后减，突出想要突出的内容，弱化不想突出的内容或者砍掉
+
+
+专业术语
+参考资料
+支持不同屏幕英文版
+支持不同屏幕中文版
+Android手机分辨率基础知识
+
+Scree">
+<meta property="og:updated_time" content="2017-04-01T09:37:19.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发总结与设计师交互">
+<meta name="twitter:description" content="Google安卓设计指南英文版
+Google安卓设计指南中文版
+
+布局
+margin/padding/border知识
+
+Google推荐布局间隔
+
+Android布局
+
+布局完了之后，可以站在用户的角度看自己的设计
+
+页面元素，先加后减，突出想要突出的内容，弱化不想突出的内容或者砍掉
+
+
+专业术语
+参考资料
+支持不同屏幕英文版
+支持不同屏幕中文版
+Android手机分辨率基础知识
+
+Scree">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/07/16/2014-07-16-android-designer-ui/"/>
+
+
+
+
+
+  <title> Android开发总结与设计师交互 | TuStar' Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TuStar' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/07/16/2014-07-16-android-designer-ui/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tustar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TuStar' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android开发总结与设计师交互
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-07-16T16:41:01+08:00">
+                2014-07-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/07/16/2014-07-16-android-designer-ui/" class="leancloud_visitors" data-flag-title="Android开发总结与设计师交互">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p><a href="http://developer.android.com/design/index.html" target="_blank" rel="external">Google安卓设计指南英文版</a></p>
+<p><a href="http://23.244.200.195/design/get-started/creative-vision.html" target="_blank" rel="external">Google安卓设计指南中文版</a></p>
+</blockquote>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><ul>
+<li><p><a href="http://www.cnblogs.com/linjiqin/p/3556497.html" target="_blank" rel="external">margin/padding/border知识</a></p>
+</li>
+<li><p><a href="http://developer.android.com/design/style/metrics-grids.html" target="_blank" rel="external">Google推荐布局间隔</a></p>
+</li>
+<li><p><a href="http://www.cnblogs.com/wisekingokok/archive/2011/08/23/2150452.html" target="_blank" rel="external">Android布局</a></p>
+</li>
+<li><p>布局完了之后，可以站在用户的角度看自己的设计</p>
+</li>
+<li><p>页面元素，先加后减，突出想要突出的内容，弱化不想突出的内容或者砍掉</p>
+</li>
+</ul>
+<h4 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h4><ul>
+<li><p>参考资料</p>
+<p><a href="http://developer.android.com/guide/practices/screens_support.html" target="_blank" rel="external">支持不同屏幕英文版</a></p>
+<p><a href="http://peng4602.iteye.com/blog/1837474" target="_blank" rel="external">支持不同屏幕中文版</a></p>
+<p><a href="http://blog.csdn.net/moruite/article/details/6028547" target="_blank" rel="external">Android手机分辨率基础知识</a></p>
+</li>
+<li><p>Screen size(屏幕尺寸)<br>实际的物理尺寸，也就是屏幕的对角线尺寸。<br>为简单起见，Android把所有的实际此存分成四个普遍的组：小，正常，大，巨大</p>
+</li>
+<li><p>Screen density（屏幕密度）屏幕一个物理区域上像素点的总数，通常被称作dpi（每英寸的像素点数）。例如，一个低密度屏幕比正常密度和高密度屏幕在给定的物理屏幕区域上的像素点更少。为简单起见，Android把所有的实际此存分成四个普遍的组：小，正常，大，巨大。</p>
+</li>
+<li><p>Resolution（分辨率）</p>
+<p>一个屏幕的总的物理像素点。当为多屏幕提供支持时，应用程序不直接用像素工作；我们只应该关心应用程序运行设备的屏幕尺寸和密度，然后指定是哪个组的尺寸和哪个组的密度。</p>
+</li>
+<li><p>Density-independent pixel (dp)（逻辑密度单位）</p>
+<p>当你设计UI界面的时候你应该用虚拟的像素单位来表示布局的尺寸和位置。当屏幕密度是160dpi是这个逻辑密度单位等于一个物理像素，同时160dpi作为基线密度被系统认为是中等密度屏幕，当必要时系统在运行时显示的处理基于当前屏幕的实际密度的dp单位的任何缩放，dp单位和屏幕像素转换公式是px=dp*(dpi/160)。例如在一个240dpi的屏幕，1dp等于1.5像素，当你设计你应用程序ui时你应该总是用dp单位来处理不同的屏幕密度</p>
+</li>
+</ul>
+<h4 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h4><ul>
+<li><p>应用图标尺寸</p>
+<p>| 分辨率        | 尺寸 (单位：像素)          |<br>| ———— |:————-:|<br>| ldpi         | 36<em>36       |<br>| mdpi         | 48</em>48       |<br>| hdpi         | 72<em>72       |<br>| xhdpi        | 96</em>96       |<br>| xxhdpi       | 144<em>144     |<br>| web          | 512</em>512     |</p>
+</li>
+<li><p>设计技巧</p>
+<ul>
+<li><p><a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="external">图标设计技巧英文版</a>，中文版的可以到Google安卓设计指南中文版中查找</p>
+</li>
+<li><p><strong>若应用图标是圆角的，切记圆角部分是透明背景</strong></p>
+</li>
+<li><p>存储图片时，建议采用RGB565编码，减少图片尺寸</p>
+</li>
+<li><p>图片命名及格式</p>
+</li>
+<li><p>未特殊说明，图片一律采用png格式</p>
+</li>
+<li><p>命名规范</p>
+<ul>
+<li><p>按钮 _n(normal)正常, _p(pressed)按下, _d（disable）不可点击命名</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">fresh_ic_tab_home_n.png</div><div class="line">fresh_ic_tab_home_p.png</div><div class="line">fresh_ic_navi_back_n.png</div><div class="line">fresh_ic_navi_back_p.png</div></pre></td></tr></table></figure>
+</li>
+<li><p>图标名字前缀</p>
+<p>| Asset Type     |Prefix          | Example           |<br>| ————— |:——————:|:—————–:|<br>| Icons     |ic_      | ic_star.png   |<br>| Launcher    |ic_launcher  | ic_launcher_calendar.png   |<br>| Menu      |ic_menu    | ic_menu_archive.png   |<br>| Status bar  |ic_stat_notify | ic_stat_notify_msg.png  |<br>| Tab icons   |ic_tab     | ic_tab_recent.png   |<br>| Dialog icons  |ic_dialog    | ic_dialog_info.png   |</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><ul>
+<li><p><a href="http://developer.android.com/design/style/typography.html" target="_blank" rel="external">Android手机默认字体</a></p>
+</li>
+<li><p>第三方字体，宋体…</p>
+</li>
+</ul>
+<h4 id="文字"><a href="#文字" class="headerlink" title="文字"></a>文字</h4><ul>
+<li><p>书写格式 <a href="http://developer.android.com/design/style/writing.html" target="_blank" rel="external">Google推荐书写格式</a></p>
+</li>
+<li><p>大小</p>
+<ul>
+<li>12sp 14sp 18sp …</li>
+<li><a href="http://developer.android.com/design/style/typography.html" target="_blank" rel="external">Google推荐尺寸</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h4><ul>
+<li><p>若图片为纯色，只需告诉开发者颜色参数</p>
+</li>
+<li><p>若图片有重复部分，采用draw9patch加工图片<br><a href="http://blog.csdn.net/zhufuing/article/details/8058241" target="_blank" rel="external">Draw9patch的使用</a></p>
+</li>
+</ul>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><ul>
+<li><p>多看看大公司的UI设计</p>
+</li>
+<li><p>参考一些优秀网站的分享网站的UI设计</p>
+</li>
+<li><p>设计师相互交流</p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/UI/" rel="tag"># UI</a>
+          
+            <a href="/tags/Design/" rel="tag"># Design</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/06/30/2014-06-30-moblie-phone-push/" rel="next" title="手机端推送平台调研">
+                <i class="fa fa-chevron-left"></i> 手机端推送平台调研
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/09/19/2015-09-19-ubuntu-software/" rel="prev" title="Ubuntu常用软件">
+                Ubuntu常用软件 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="tustar" />
+          <p class="site-author-name" itemprop="name">tustar</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#布局"><span class="nav-number">1.</span> <span class="nav-text">布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#专业术语"><span class="nav-number">2.</span> <span class="nav-text">专业术语</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图标"><span class="nav-number">3.</span> <span class="nav-text">图标</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字体"><span class="nav-number">4.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文字"><span class="nav-number">5.</span> <span class="nav-text">文字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#截图"><span class="nav-number">6.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充"><span class="nav-number">7.</span> <span class="nav-text">补充</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tustar</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129629"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("xRQp9BLq3q7iYjiMYD1WHVlz-gzGzoHsz", "sQyvsyUDVCFQen7bLmMlJxkU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

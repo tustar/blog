@@ -1,0 +1,919 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android,Coding,Style," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="资源文件
+res/资源文件名
+
+项目名缩写_(不用于第三方集成，可缺省)组件名称_模块名称(模块简单，可缺省).xml
+fresh_activity(item，dialog)_splash.xml
+1234567891011121314151617181920212223242526272829303132333435363738394041// fresh 项目名称简写,若不提供给其他项目使用，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android开发总结编码规范与注意事项">
+<meta property="og:url" content="http://yoursite.com/2014/06/24/2014-06-24-android-code-style/index.html">
+<meta property="og:site_name" content="TuStar' Blog">
+<meta property="og:description" content="资源文件
+res/资源文件名
+
+项目名缩写_(不用于第三方集成，可缺省)组件名称_模块名称(模块简单，可缺省).xml
+fresh_activity(item，dialog)_splash.xml
+1234567891011121314151617181920212223242526272829303132333435363738394041// fresh 项目名称简写,若不提供给其他项目使用，">
+<meta property="og:updated_time" content="2017-04-01T09:37:19.369Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android开发总结编码规范与注意事项">
+<meta name="twitter:description" content="资源文件
+res/资源文件名
+
+项目名缩写_(不用于第三方集成，可缺省)组件名称_模块名称(模块简单，可缺省).xml
+fresh_activity(item，dialog)_splash.xml
+1234567891011121314151617181920212223242526272829303132333435363738394041// fresh 项目名称简写,若不提供给其他项目使用，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/06/24/2014-06-24-android-code-style/"/>
+
+
+
+
+
+  <title> Android开发总结编码规范与注意事项 | TuStar' Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">TuStar' Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/06/24/2014-06-24-android-code-style/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tustar">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="TuStar' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android开发总结编码规范与注意事项
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2014-06-24T16:41:01+08:00">
+                2014-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2014/06/24/2014-06-24-android-code-style/" class="leancloud_visitors" data-flag-title="Android开发总结编码规范与注意事项">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h3><ol>
+<li><p>res/资源文件名</p>
+<ul>
+<li>项目名缩写_(不用于第三方集成，可缺省)组件名称_模块名称(模块简单，可缺省).xml</li>
+<li><p>fresh_activity(item，dialog)_splash.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">// fresh 项目名称简写,若不提供给其他项目使用，项目名称可省略</div><div class="line">anim</div><div class="line">  fresh_alpha_in.xml</div><div class="line">  fresh_alpha_in.xml</div><div class="line">  ...</div><div class="line"></div><div class="line">// n为normal的简写， p为pressed的简写， d为disable的简写</div><div class="line">drawable</div><div class="line">  fresh_shape_btn_n.xml</div><div class="line">  fresh_shape_btn_p.xml</div><div class="line">  fresh_shape_btn_d.xml</div><div class="line">  fresh_selector_btn.xml</div><div class="line">  fresh_selector_tab_home.xml</div><div class="line">  fresh_selector_navi_back.xml</div><div class="line"></div><div class="line">  // 图片命名</div><div class="line">  fresh_ic_tab_home_n.png</div><div class="line">  fresh_ic_tab_home_p.png</div><div class="line">  fresh_ic_navi_back_n.png</div><div class="line">  fresh_ic_navi_back_p.png</div><div class="line">  ...</div><div class="line"></div><div class="line">  图片命名参考图片命名链接</div><div class="line"></div><div class="line">layout</div><div class="line"></div><div class="line">  fresh_activity_spalsh.xml</div><div class="line">  fresh_fragment_article_detail.xml</div><div class="line">  fresh_item_product_list.xml</div><div class="line">  fresh_item_product_grid.xml</div><div class="line">  fresh_navi_bar.xml</div><div class="line">  fresh_item_tab.xml</div><div class="line">  ...</div><div class="line"></div><div class="line">values</div><div class="line"></div><div class="line">  fresh_strings.xml</div><div class="line">  fresh_ids.xml</div><div class="line">  fresh_bool.xml</div><div class="line">  fresh_public.xml</div><div class="line">  ...</div></pre></td></tr></table></figure>
+<p><a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="external">图片命名参考</a></p>
+</li>
+</ul>
+</li>
+<li><p>ID名称</p>
+<ul>
+<li>模块名称_组件名称</li>
+<li>splash_imageview_logo</li>
+<li><p>ID名称尽量不要相同，重构时，会导致改一个名称，导致很多资源文件的ID同时发生改变</p>
+<p>layout:fresh_activity_setting.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    android:layout_width=&quot;match_parent&quot;</div><div class="line">    android:layout_height=&quot;match_parent&quot;</div><div class="line">    android:background=&quot;@color/fresh_color_bg&quot; &gt;</div><div class="line"></div><div class="line">    &lt;include</div><div class="line">        android:id=&quot;@+id/setting_navi_bar&quot;</div><div class="line">        layout=&quot;@layout/fresh_navibar&quot; /&gt;</div><div class="line"></div><div class="line">    &lt;ImageView</div><div class="line">        android:id=&quot;@+id/setting_icon&quot;</div><div class="line">        android:layout_width=&quot;80dp&quot;</div><div class="line">        android:layout_height=&quot;80dp&quot;</div><div class="line">        android:layout_below=&quot;@+id/includeTitle&quot;</div><div class="line">        android:layout_centerHorizontal=&quot;true&quot;</div><div class="line">        android:layout_marginTop=&quot;15dp&quot;</div><div class="line">        android:contentDescription=&quot;@string/fresh_app_name&quot;</div><div class="line">        android:src=&quot;@drawable/fresh_ic_launcher&quot; /&gt;</div><div class="line">&lt;/RelativeLayout&gt;</div></pre></td></tr></table></figure>
+<p>values:fresh_strings.xml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;resources&gt;</div><div class="line"></div><div class="line"> &lt;!-- 应用名称 --&gt;</div><div class="line"> &lt;string name=&quot;fresh_app_name&quot;&gt;Fresh&lt;/string&gt;</div><div class="line"></div><div class="line"> &lt;!-- 常用 --&gt;</div><div class="line"> &lt;string name=&quot;fresh_ok&quot;&gt;确定&lt;/string&gt;/Users/Tu/Dropbox/GitHub/Study/Android开发总结(二) 与设计师交互.md</div><div class="line"> &lt;string name=&quot;fresh_cancel&quot;&gt;取消&lt;/string&gt;</div><div class="line"> &lt;string name=&quot;fresh_send&quot;&gt;发送&lt;/string&gt;</div><div class="line">&lt;/resources&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>公用布局部分的layout单独写成一个布局文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">fresh_navibar.xml</div><div class="line"></div><div class="line">// 使用include的方式调用</div><div class="line">&lt;include</div><div class="line">    android:id=&quot;@+id/setting_navi_bar&quot;</div><div class="line">    layout=&quot;@layout/fresh_navibar&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>一些布局文件若不需要马上显示的，可以采用ViewStub来延迟加载<br>一些布局文件可以用merge来减少父布局，提升UI加载刷新速度</p>
+</li>
+<li><p>应用图标尺寸<br>| 分辨率        | 尺寸 (单位：像素)          |<br>| ———— |:————-:|<br>| ldpi         | 36<em>36       |<br>| mdpi         | 48</em>48       |<br>| hdpi         | 72<em>72       |<br>| xhdpi        | 96</em>96       |<br>| xxhdpi       | 144<em>144     |<br>| web          | 512</em>512     |</p>
+</li>
+<li><p>屏幕分辨率适配，目前Android Studio的预览效果非常不错<br> <a href="http://www.umindex.com/" target="_blank" rel="external">友盟指数</a></p>
+</li>
+<li><p><strong>修改布局文件layout和values时，需要改全不同分辨率和语言版本，我曾经犯过很多次这样的错误</strong></p>
+</li>
+</ol>
+<h3 id="类文件"><a href="#类文件" class="headerlink" title="类文件"></a>类文件</h3><p><a href="https://google-styleguide.googlecode.com/svn/trunk/javaguide.html" target="_blank" rel="external">Google Java Style</a></p>
+<p><a href="http://hawstein.com/posts/google-java-style.html" target="_blank" rel="external">谷歌Java编码规范中文版</a></p>
+<ul>
+<li><p>命名规范</p>
+<ul>
+<li>类名采用驼峰命名法<ul>
+<li>变量名，不要用匈牙利命名法，采用首字符小写的驼峰命名法</li>
+</ul>
+</li>
+<li>方法名，要能够说明此方法的用途</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>数组中，若索引是有特殊含义，建议使用常量</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public static final int INDEX_ID = 0;</div><div class="line">public static final int INDEX_NAME = 1;</div><div class="line"></div><div class="line">String[] person = new String[]();</div><div class="line">...</div><div class="line">String name = person[INDEX_NAME];</div><div class="line">// 对比</div><div class="line">String name = person[1];</div></pre></td></tr></table></figure>
+</li>
+<li><p>Model属性适当的加入注释</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class Tactic &#123;</div><div class="line"></div><div class="line">    private static final long serialVersionUID = 1L;</div><div class="line">    private int id;</div><div class="line">    private String action;</div><div class="line">    private String value;</div><div class="line">    private int notice_type;</div><div class="line">    private boolean isReaded = false;</div><div class="line">    private Integer[] advertisement_ids;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  字段action是什么意思，由英文翻译过来为动作，而真正的用途策略，并且不同的值代表不同策略，建议改成枚举类型（Enum）</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class Order extends FreshObject &#123;</div><div class="line"></div><div class="line">    private int pay_type = PayType.HDFK.value;// 付款方式1：货到付款2：已汇款</div><div class="line">    private float total;// 订单总金额</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>适当加入空行，增加代码的可阅读性</strong></p>
+</li>
+<li><p>一些常用的常量，可以集中定义到一个Interface中</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface CommonDefine &#123;</div><div class="line"></div><div class="line">    public static final int MIN_EXPAND_COUNT = 3;</div><div class="line">    public static final int PER_PAGE = 10;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>编完代码后，格式化代码</strong></p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Eclipse: Shift+Command+F （MAC OS）</div><div class="line">Android Studio: Option+Command+L(MAC OS)</div></pre></td></tr></table></figure>
+</li>
+<li><p>谨慎使用三元运算符(?:)嵌套 , 太多降低代码阅读性,建议拆分从if..else,建议尽量不要嵌套三元运算符</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public int getCount() &#123;</div><div class="line">    return currentViewType == ViewType.LIST ? (products != null ? products</div><div class="line">            .size() : 0)</div><div class="line">            : (products != null ? (products.size() % 2 == 0 ? products</div><div class="line">                    .size() / 2 : (products.size() / 2 + 1)) : 0);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  这样的代码，可阅读性非常差。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public int getCount() &#123;</div><div class="line"></div><div class="line">    if (currentViewType == ViewType.LIST) &#123;</div><div class="line">        return products != null ? products</div><div class="line">                .size() : 0;</div><div class="line">    &#125; else &#123;</div><div class="line">        if (products != null) &#123;</div><div class="line">            return products.size() % 2 == 0 ? products</div><div class="line">                    .size() / 2 : (products.size() / 2 + 1);</div><div class="line">        &#125; else &#123;</div><div class="line">            return 0;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>  可阅读性强</p>
+</li>
+<li><p>startActivityForResult所需的RequestCode统一管理</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public interface RequestCode &#123;</div><div class="line"></div><div class="line">    public static final int TopicCreateActivity = 0x00002;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>Intent的action,putExtra的key统一管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public interface IntentExtra &#123;</div><div class="line"></div><div class="line">  // 自定义, com.xxx.xxx为项目包名</div><div class="line">  public static final String TAG = &quot;com.xxx.xxx.intent.extra.TAG&quot;;</div><div class="line">  // Android系统的</div><div class="line">  public static final String EXTRA_TEXT = &quot;android.intent.extra.TEXT&quot;;</div><div class="line"></div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public interface IntentAction &#123;</div><div class="line"></div><div class="line">  // 自定义, com.xxx.xxx为项目包名</div><div class="line">    public static final String MAIN = &quot;com.xxx.xxx.intent.action.MAIN&quot;;</div><div class="line">    // Android系统的</div><div class="line">    public static final String ACTION_MAIN = &quot;android.intent.action.MAIN&quot;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>SharedPreferences的Key统一管理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public interface PrefKey &#123;</div><div class="line"></div><div class="line">  public static final String PRODUCT = &quot;product&quot;;</div><div class="line">  ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>Log输出</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div></pre></td><td class="code"><pre><div class="line">public class WelcomeActivity &#123;</div><div class="line"></div><div class="line">  private static final String TAG = WelcomeActivity.class.getSimpleName(); // 建议</div><div class="line"></div><div class="line">  // private static final String TAG = “WelcomeActivity”; //</div><div class="line">  // 不建议，一旦重命名类名，类名不会自动改变，一不注意会影响后期调试</div><div class="line"></div><div class="line">  @Override</div><div class="line">  public void onCreate(Bundle savedInstanceState) &#123;</div><div class="line"></div><div class="line">    Log.i(TAG, &quot;onCreate :: savedInstanceState = &quot; + savedInstanceState);</div><div class="line">    // 因为是信息级别，所以比较喜欢用Log.i, 输出内容是参照C#中Log输出编写，具体格式为:方法名 + “ :: ”(::左右有空格) +</div><div class="line">    // 变量名 + “ = ”(左右有空格) + 变量</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  @Override</div><div class="line">  protected void onResume() &#123;</div><div class="line"></div><div class="line">    Log.i(TAG, &quot;onResume ::&quot;);</div><div class="line">    super.onResume();</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /**</div><div class="line">   * Add shortcut to launcher (多写注释和描述方法，易于代码维护和阅读，具体格式可以参考Java的文档规范)</div><div class="line">   */</div><div class="line">  private void addShortcut() &#123;</div><div class="line"></div><div class="line">    Log.i(TAG, &quot;addShortcut ::&quot;);</div><div class="line">    // 信息级别的输出,所以喜欢用Log.i</div><div class="line"></div><div class="line">    Intent intent = new Intent(</div><div class="line">        &quot;com.android.launcher.action.INSTALL_SHORTCUT&quot;);</div><div class="line">    intent.putExtra(Intent.EXTRA_SHORTCUT_NAME,</div><div class="line">        getString(R.string.app_name));</div><div class="line">    intent.putExtra(&quot;duplicate&quot;, false);</div><div class="line">    ComponentName componentName = new ComponentName(getPackageName(),</div><div class="line">        getPackageName() + &quot;.&quot; + getLocalClassName());</div><div class="line"></div><div class="line">    Log.d(TAG, &quot;addShortcut :: componentName = &quot; + componentName);</div><div class="line">    // 调试级别的输出，所以用Log.d</div><div class="line"></div><div class="line">    intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, new Intent(</div><div class="line">        Intent.ACTION_MAIN).setComponent(componentName));</div><div class="line">    ShortcutIconResource iconResource = Intent.ShortcutIconResource</div><div class="line">        .fromContext(context, R.drawable.ic_launcher);</div><div class="line">    intent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, iconResource);</div><div class="line">    sendBroadcast(intent);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /**</div><div class="line">   * Judge have the shortcut on launcher or not</div><div class="line">   * (多写注释和描述方法，易于代码维护和阅读，具体格式可以参考Java的文档规范)</div><div class="line">   *</div><div class="line">   * @return ...</div><div class="line">   */</div><div class="line">  private boolean hasShortcut() &#123;</div><div class="line"></div><div class="line">    Log.i(TAG, &quot;hasShortcut ::&quot;);</div><div class="line">    String url;</div><div class="line">    if (Build.VERSION.SDK_INT &lt; 8) &#123;</div><div class="line">      url = &quot;content://com.android.launcher.settings/favorites?notify=true&quot;;</div><div class="line">    &#125; else &#123;</div><div class="line">      url = &quot;content://com.android.launcher2.settings/favorites?notify=true&quot;;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    Cursor cursor = null;</div><div class="line">    try &#123;</div><div class="line">      ContentResolver resolver = getContentResolver();</div><div class="line">      cursor = resolver.query(Uri.parse(url), new String[] &#123; &quot;title&quot; &#125;,</div><div class="line">          &quot;title=?&quot;, new String[] &#123; getString(R.string.app_name) &#125;,</div><div class="line">          null);</div><div class="line">      if (cursor != null &amp;&amp; cursor.getCount() &gt; 0) &#123;</div><div class="line">        cursor.close();</div><div class="line">        return true;</div><div class="line">      &#125;</div><div class="line">    &#125; catch (Exception e) &#123;</div><div class="line">      Log.e(TAG, &quot;hasShortcut :: Exception =&gt; Error: &quot; + e.getMessage());</div><div class="line">      // 错误级别的输出，所以用Log.e</div><div class="line">      e.printStackTrace();</div><div class="line">      // 输出错误栈堆里的信息，方便调试</div><div class="line">    &#125; finally &#123;</div><div class="line">      if (cursor != null &amp;&amp; !cursor.isClosed()) &#123;</div><div class="line">        cursor.close();</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return false;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  /**</div><div class="line">   * Get the section tags like &apos;Hot tag&apos; or &apos;search history&apos;</div><div class="line">   * (多写注释和描述方法，易于代码维护和阅读，具体格式可以参考Java的文档规范)</div><div class="line">   *</div><div class="line">   * @param groups</div><div class="line">   * @return</div><div class="line">   */</div><div class="line">  private List&lt;String&gt; getGroups(String[] groups) &#123;</div><div class="line"></div><div class="line">    Log.i(TAG, &quot;getGroups :: groups = &quot; + groups);</div><div class="line">    // 信息级别的输出,所以用Log.i</div><div class="line"></div><div class="line">    if (groups == null || groups.isEmpty()) &#123;</div><div class="line">      Log.w(TAG, &quot;getGroups :: groups is null or empty&quot;);</div><div class="line">      // 警告级别的输出,所以用Log.w</div><div class="line">    &#125;</div><div class="line">    // 参数检查，有助于减少出错和提升性能</div><div class="line"></div><div class="line">    List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">    for (String string : groups) &#123;</div><div class="line">      list.add(string);</div><div class="line">    &#125;</div><div class="line">    return list;</div><div class="line">  &#125;</div><div class="line">  /*</div><div class="line">   * 这里的代码是多余的，应该改为用List&lt;String&gt; list = Arrays.asList(groups);若系统帮助类提供某些方法,</div><div class="line">   * 我们就没必要花时间去写一些重复的东西，这是自己以前的老代码，贴出了是为了提醒自己。</div><div class="line">   */</div><div class="line"></div><div class="line">  // 至于verbose、assert怎么用，用得比较少，欢迎大家共同探讨。后期会从网上收集补全这方面的内容。</div><div class="line"></div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p><strong>多用系统自带的工具类和第三方工具类，没必要自己去重复造轮子</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">TextUtils</div><div class="line">URLEncodedUtils</div><div class="line">URIUtils</div><div class="line">Utils</div><div class="line">DateUtils</div><div class="line">DatabaseUtils</div><div class="line">Time</div><div class="line">Arrays</div><div class="line">Collections</div><div class="line">...</div></pre></td></tr></table></figure>
+<p><a href="http://developer.android.com/reference/android/database/DatabaseUtils.html#q=utils" target="_blank" rel="external">更多原生工具类</a></p>
+<p><a href="http://www.trinea.cn/android/android-common-utils/" target="_blank" rel="external">第三方优秀工具类</a></p>
+</li>
+</ul>
+<ul>
+<li><p><strong>多关注一些第三方开源库，可以从中学习到如何编写框架，使用别人写好的框架，减少开发工作。</strong></p>
+<p><a href="http://www.trinea.cn/android/android-open-source-projects-dev-lib/" target="_blank" rel="external">Android优秀的开源库</a></p>
+</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag"># Android</a>
+          
+            <a href="/tags/Coding/" rel="tag"># Coding</a>
+          
+            <a href="/tags/Style/" rel="tag"># Style</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/02/08/2014-02-08-mac-software/" rel="next" title="Mac常用软件大全">
+                <i class="fa fa-chevron-left"></i> Mac常用软件大全
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/06/30/2014-06-30-moblie-phone-push/" rel="prev" title="手机端推送平台调研">
+                手机端推送平台调研 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="tustar" />
+          <p class="site-author-name" itemprop="name">tustar</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#资源文件"><span class="nav-number">1.</span> <span class="nav-text">资源文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类文件"><span class="nav-number">2.</span> <span class="nav-text">类文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tustar</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    
+
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129629"></script>
+      <!-- UY END -->
+    
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("xRQp9BLq3q7iYjiMYD1WHVlz-gzGzoHsz", "sQyvsyUDVCFQen7bLmMlJxkU");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>
